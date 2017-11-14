@@ -1,0 +1,86 @@
+﻿<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no"/>
+	<meta name="apple-mobile-web-app-capable" content="yes"/>
+	<meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <title>图片预览</title>
+    <!--<script src="js/mui.min.js"></script>-->
+    <link href="css/mui.min.css" rel="stylesheet"/>
+    <script src="http://www.codefans.net/ajaxjs/jquery-1.6.2.min.js"></script>
+	<script src="js/yulan.js"></script>
+	<style>
+		.typefile {
+			margin-top: 4px;
+			padding: 5px;
+		    position: relative;
+		    cursor: pointer;
+		    color: #888;
+		    background: #fafafa;
+		    border: 1px solid #ddd;
+		    border-radius: 4px;
+		    overflow: hidden;
+		    display: inline-block;
+		    *display: inline;
+		    *zoom: 1
+		}
+		input {
+			position: absolute;
+		    font-size: 100px;
+		    right: 0;
+		    top: 0;
+		    opacity: 0;
+		    filter: alpha(opacity=0);
+		    cursor: pointer
+		}
+		#yulan {
+			border: 1px solid orange;
+			margin-top: 10px;
+			-webkit-animation: error-swing infinite 2s ease-in-out alternate;
+			-moz-animation: error-swing infinite 2s ease-in-out alternate;
+			animation: error-swing infinite 2s ease-in-out alternate;
+		}
+		@-webkit-keyframes error-swing {
+			0% {
+				-webkit-transform: rotate(1deg)
+			}
+			100% {
+				-webkit-transform: rotate(-2deg)
+			}
+		}
+		@-moz-keyframes error-swing {
+			0% {
+				-moz-transform: rotate(1deg)
+			}
+			100% {
+				-moz-transform: rotate(-2deg)
+			}
+		}
+		@keyframes error-swing {
+			0% {
+				transform: rotate(1deg)
+			}
+			100% {
+				transform: rotate(-2deg)
+			}
+		}
+	</style>
+</head>
+<body>
+	<form name="form0" id="form0" class="mui-input-group">
+		<div class="mui-input-row">
+			<label>选择图片</label>
+			<div class="typefile">
+				<input type="file" name="file0" id="file0" multiple="multiple" />
+				点击这里选择文件
+			</div>
+		</div>
+		<div class="mui-button-row">
+			<button class="mui-btn mui-btn-primary" type="button" id="btn">预览</button>
+		</div>
+	</form>
+	<canvas id="yulan" width="410" height="300"></canvas>
+
+</body>
+</html>
