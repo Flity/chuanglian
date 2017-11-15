@@ -34,7 +34,8 @@ function ClothApp() {
     tex.onload = function () {
         _this.start();
     };
-    tex.src = "20090226032826.gif";
+    // tex.src = "20090226032826.gif";
+    tex.src = this.canvas.toDataURL("image/png");
 
     tex = new Image();
     this.texture2 = tex;
@@ -95,12 +96,18 @@ ClothApp.prototype = {
         this.generateRenderTriangles();
 
         var _this = this;
-        this.canvas.addEventListener("mousemove", function (e) {
-            _this.onMouseMove(e);
-        }, false);
-        this.canvas.addEventListener("mousedown", function (e) {
-            _this.onClick(e);
-        }, false);
+        this.mViewFromA.y = 170;
+        setInterval(function () {
+            var a = parseInt(Math.random() * 90);
+            _this.mWForce.z = -4;
+            _this.mWForce.x = a* -0.03;
+        }, 2500);
+        // this.canvas.addEventListener("mousemove", function (e) {
+        //     _this.onMouseMove(e);
+        // }, false);
+        // this.canvas.addEventListener("mousedown", function (e) {
+        //     _this.onClick(e);
+        // }, false);
 
         window.setTimeout(function () {
             _this.onInterval();
@@ -196,7 +203,7 @@ ClothApp.prototype = {
     },
 
     draw: function () {
-        P3D.clear("#000", this.mViewport.w, this.mViewport.h);
+        P3D.clear("#6D5934", this.mViewport.w, this.mViewport.h);
         this.transformPolygons();
 
         this.mRenderTris.sort(ClothApp.zsortCmp);
@@ -265,7 +272,7 @@ ClothApp.prototype = {
 
     generateCloth: function (base_y) {
         var cols = 9;
-        var rows = 8;
+        var rows = 10;
 
         var step = 22;
         this.mNLen = step * 0.9;
